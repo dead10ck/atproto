@@ -30,10 +30,12 @@ export class DidWebResolver extends BaseResolver {
     }
 
     try {
+      console.log(`requesting url: ${url.toString()}`)
       const res = await axios.get(url.toString(), {
         responseType: 'json',
         timeout: this.timeout,
       })
+      console.log(`response: ${res}`)
       return res.data
     } catch (err) {
       if (err instanceof AxiosError && err.response) {

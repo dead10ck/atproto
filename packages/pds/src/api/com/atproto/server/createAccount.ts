@@ -207,9 +207,9 @@ const getDidAndPlcOp = async (
   let atpData: AtprotoData
   try {
     atpData = await ctx.idResolver.did.resolveAtprotoData(input.did)
-  } catch (err) {
+  } catch (err: any) {
     throw new InvalidRequestError(
-      `could not resolve valid DID document :${input.did}`,
+      `could not resolve valid DID document: ${input.did}\n----------${err.stack}\n----------`,
       'UnresolvableDid',
     )
   }
